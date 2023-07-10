@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+/* Universal selector */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Oswald", sans-serif;
+  background-image: url(https://img.freepik.com/premium-photo/light-wooden-table-top-light-gray-background-copy-space_443598-3217.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* header styles */
+.header {
+  background-image:linear-gradient(to right,rgba(10, 11, 11, 0.571),rgba(255, 166, 0, 0.787)), url("../assets/1.webp");
+  height: 400px;
+  color: whitesmoke;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* footer stykes */
+.footer {
+  background-color: #333;
+  padding: 30px;
+  color: gold;
+  text-align: center;
+  font-size: 3rem;
+}
+
+/* main content */
+.main {
+  min-height: 70vh;
+ 
+}
+
+.emp-profile {
+  width: 350px;
+  margin: auto;
+  text-align: center;
+  margin-top: 50px;
+  box-shadow: 1px 1px 10px grey;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: white;
+}
+
+img {
+  width: 50%;
+  border-radius: 50%;
+}
+
+
+.header p{
+    font-size: 4rem;
+    background: -webkit-linear-gradient(rgb(0, 42, 255),rgb(0, 221, 255),red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
