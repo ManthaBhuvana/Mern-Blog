@@ -1,0 +1,39 @@
+.parent{
+    width: 650px;
+    height: 650px;
+    border: 2px solid;
+    margin: auto;
+    margin-top: 50px;
+    /* create flex container */
+    display: flex;
+    flex-direction: row;
+    /* gap:50px; */
+    justify-content: center;
+    align-items: center;
+}
+
+.child{
+    width: 100px;
+    height: 100px;
+   
+
+}
+
+.child-1{
+    background-color: red;
+    /* flex-grow: 1; */
+}
+
+.child-2{
+    background-color: blue;
+    /* flex-grow: 2; */
+    align-self: flex-start;
+}
+
+.child-3{
+    background-color: green;
+    /* flex-grow: 3; */
+}
+
+
+
