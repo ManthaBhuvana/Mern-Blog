@@ -17,6 +17,9 @@ nav {
   background-color: #303030;
   align-items: center;
   padding: 5px 15px;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
 }
 
 ul {
@@ -66,6 +69,8 @@ main .shirt{
     padding: 15px;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     border-radius: 10px;
+    position: relative;
+    z-index: 1;
 }
 
 main img{
@@ -81,7 +86,12 @@ main button{
 
 
 
-
+.logo{
+  width: 60px;
+  position: absolute;
+  top:0;
+  right:0;
+}
 
 
 

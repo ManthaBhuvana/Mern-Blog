@@ -1,0 +1,35 @@
+.parent{
+    display: flex;
+    
+    max-width: 600px;
+    border: 1px solid;
+    padding: 50px;
+    margin: auto;
+    margin-top: 50px;
+    gap:10px;
+    align-items: center;
+}
+
+.child{
+    width: 100px;
+    border: 1px solid;
+   
+   
+}
+
+.child1{
+    height: 100px;
+    flex-basis: 200px;
+    flex-grow: 1; 
+    flex-shrink: 0;  
+}
+.child2{
+    height: 200px;
+    flex-basis: 0;
+    flex-grow: 2;
+}
+.child3{
+    height: 300px;
+    flex-basis: 0;
+    flex-grow: 1;
+}
