@@ -1,0 +1,41 @@
+h1 {
+  /* font-size: calc(1.5rem + 5vw); */
+  font-size: 4rem;
+  text-align: center;
+  color: #888;
+}
+
+img {
+  widows: 500px;
+  display: block;
+  margin: auto;
+}
+
+div {
+  column-count: 4;
+  column-width: 200px;
+}
+
+.flex-container {
+  max-width: 700px;
+  border: 2px solid black;
+  height: 500px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.child {
+  width: 100px;
+  height: 100px;
+  background-color: #888;
+  border: 2px solid red;
+}
+
+img {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin: auto;
+}

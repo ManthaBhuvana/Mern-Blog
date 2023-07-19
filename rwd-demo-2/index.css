@@ -1,0 +1,47 @@
+h1 {
+  text-align: center;
+  font-size: 5rem;
+}
+
+img{
+    width: 100%;
+    max-width: 500px;
+    display:block;
+    margin: auto;
+}
+
+body {
+}
+
+@media all and (max-width:500px) {
+  h1 {
+    color: red;
+    font-size: 1.8rem;
+  }
+  /* body{
+    background-color: yellow;
+  } */
+}
+
+@media all and (min-width: 501px) and (max-width: 700px) {
+  h1 {
+    color: green;
+    font-size:2.8rem;
+  }
+  img{
+    display: none;
+  }
+  /* body{
+    background-color: #888;
+  } */
+}
+
+@media all and (min-width: 701px) {
+  h1 {
+    color: blue;
+    font-size:4rem;
+  }
+  /* body{
+    background-color: orange;
+  } */
+}
