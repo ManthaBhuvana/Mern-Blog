@@ -53,3 +53,21 @@ if(searchResult===undefined){
 //search for index of 50
 let searchIndexResult=arr.findIndex(element=>element===400);
 console.log(searchIndexResult)
+
+
+
+
+let arr1 = [10,20,-30,40,-50];
+//find sum of elements of array
+let sum=arr1.reduce((accumulator,element)=>accumulator+element)
+                    //    100          50          150
+console.log("sum is ",sum)
+
+//find small element
+let small=arr1.reduce((acc,element)=>acc>element ? acc:element)
+console.log("small :",small)
+
+
+
+
+
