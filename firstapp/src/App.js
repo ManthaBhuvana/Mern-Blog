@@ -1,6 +1,9 @@
 
 import "./App.css";
-import Parent from "./components/parent/Parent";
+import APICallDemo from "./components/api-call-demo/APICallDemo";
+import APIDemo2 from "./components/api-call-demo/APIDemo2";
+import FormDemo from "./components/form-demo/FormDemo";
+
 
 function App() {
 
@@ -12,7 +15,7 @@ function App() {
      
       <div className="container">
       {/* nest StateDemo */}
-      <Parent />     
+      <FormDemo />     
       
       </div>
     </div>
