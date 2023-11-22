@@ -1,14 +1,22 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import "bootstrap/dist/css/bootstrap.css";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import Store from "./contexts/Store";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import UsersStore from "./contexts/UsersStore";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* Store is provided to Root component */}
+    <Store>
+      <UsersStore>
+        <App />
+      </UsersStore>
+    </Store>
   </React.StrictMode>
 );
 
