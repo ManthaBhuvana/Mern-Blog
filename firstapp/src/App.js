@@ -9,6 +9,7 @@ import ErrorRoute from "./components/ErrorRoute";
 import Java from './components/java/Java'
 import NodeJs from './components/nodejs/NodeJs'
 import Vue from './components/vue/VueJs'
+import UserDashBoard from "./components/user-dashboard/UserDashBoard";
 
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
       {
         path:"login",
         element:<Login />
+      },
+      {
+        path:"user-dashboard",
+        element:<UserDashBoard />
       },
       {
         path:"technologies",

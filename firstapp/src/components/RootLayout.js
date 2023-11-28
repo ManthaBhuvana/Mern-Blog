@@ -8,7 +8,7 @@ function RootLayout() {
     <div>
       <NavigationBar />
       {/* placeholder component */}
-      <div style={{ minHeight: "85vh" }}>
+      <div style={{ minHeight: "85vh" }} className='mt-5 container'>
         <Outlet />
       </div>
       <Footer />

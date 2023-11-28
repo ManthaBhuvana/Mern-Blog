@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 function NavigationBar() {
   return (
-    <ul className="nav justify-content-end">
+    <ul className="nav justify-content-end bg-dark text-white p-3 fs-5">
       {/* link to Home  */}
       <li className="nav-item">
         <Link className="nav-link" to=" ">
