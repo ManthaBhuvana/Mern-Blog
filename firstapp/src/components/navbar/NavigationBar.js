@@ -1,32 +1,33 @@
 import React from "react";
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
+import './NavigationBar.css'
 
 function NavigationBar() {
   return (
     <ul className="nav justify-content-end bg-dark text-white p-3 fs-5">
       {/* link to Home  */}
       <li className="nav-item">
-        <Link className="nav-link" to=" ">
+        <NavLink className="nav-link" to=" ">
           Home
-        </Link>
+        </NavLink>
       </li>
        {/* link to Register  */}
        <li className="nav-item">
-        <Link className="nav-link" to="register">
+        <NavLink className="nav-link" to="register">
           Register
-        </Link>
+        </NavLink>
       </li>
        {/* link to Login  */}
        <li className="nav-item">
-        <Link className="nav-link" to="login">
+        <NavLink className="nav-link" to="login">
           Login
-        </Link>
+        </NavLink>
       </li>
        {/* link to Tech  */}
        <li className="nav-item">
-        <Link className="nav-link" to="technologies">
+        <NavLink className="nav-link" to="technologies">
           Technologies
-        </Link>
+        </NavLink>
       </li>
    
     </ul>

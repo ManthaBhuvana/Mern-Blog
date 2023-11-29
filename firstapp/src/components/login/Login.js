@@ -22,8 +22,8 @@ function Login() {
           let result=compareSync(userCrdentialsObject.password,userObjArray[0].password)
          //if passwords are matched
          if(result===true){
-          //navigate to UserDashboard
-            navigate("/user-dashboard")
+          //navigate to UserDashboard by passing userObj as state
+            navigate(`/user-dashboard/${userCrdentialsObject.username}`,{state:userObjArray[0]})
          }else{
           alert("Invalid password")
          }

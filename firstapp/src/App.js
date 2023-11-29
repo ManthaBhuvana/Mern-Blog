@@ -33,7 +33,7 @@ function App() {
         element:<Login />
       },
       {
-        path:"user-dashboard",
+        path:"user-dashboard/:username",
         element:<UserDashBoard />
       },
       {
