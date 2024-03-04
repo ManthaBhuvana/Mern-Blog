@@ -62,7 +62,7 @@ userApp.post(
         const signedToken = jwt.sign(
           { username: dbuser.username },
           process.env.SECRET_KEY,
-          { expiresIn: 20 }
+          { expiresIn: '1d' }
         );
         //send res
         res.send({

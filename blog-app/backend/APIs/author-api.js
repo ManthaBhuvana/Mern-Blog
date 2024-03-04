@@ -55,7 +55,7 @@ authorApp.post('/login',expressAsyncHandler(async(req,res)=>{
         res.send({message:"Invalid password"})
        }else{
     //create jwt token and encode it
-        const signedToken=jwt.sign({username:dbuser.username},process.env.SECRET_KEY,{expiresIn:20})
+        const signedToken=jwt.sign({username:dbuser.username},process.env.SECRET_KEY,{expiresIn:'1d'})
     //send res
         res.send({message:"login success",token:signedToken,user:dbuser})
        }
@@ -66,6 +66,7 @@ authorApp.post('/login',expressAsyncHandler(async(req,res)=>{
 authorApp.post('/article',verifyToken,expressAsyncHandler(async(req,res)=>{
     //get new article from client
     const newArticle=req.body;
+    console.log(newArticle)
     //post to artciles collection
     await articlescollection.insertOne(newArticle)
     //send res
