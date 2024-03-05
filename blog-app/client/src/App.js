@@ -64,10 +64,10 @@ function App() {
             path:"article/:articleId",
             element:<Article />
           },
-          // {
-          //   path:'',
-          //   element:<Navigate to='articles-by-author/:author' />
-          // }
+          {
+            path:'',
+            element:<Navigate to='articles-by-author/:author' />
+          }
         ]
       }
     ]

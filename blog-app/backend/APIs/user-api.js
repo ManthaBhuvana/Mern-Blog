@@ -96,7 +96,7 @@ userApp.post(
   expressAsyncHandler(async (req, res) => {
     //get user comment obj
     const userComment = req.body;
-    const articleIdFromUrl=req.params.articleId;
+    const articleIdFromUrl=(+req.params.articleId);
     //insert userComment object to comments array of article by id
     let result = await articlescollection.updateOne(
       { articleId: articleIdFromUrl},
