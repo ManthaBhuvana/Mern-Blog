@@ -1,7 +1,7 @@
 import "./Article.css";
 import { useLocation } from "react-router-dom";
 import { Fragment, useEffect, useState } from "react";
-import {axiosWithToken} from '../../axiosWithToken'
+import { axiosWithToken } from "../../axiosWithToken";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -20,48 +20,69 @@ function Article() {
   let { currentUser } = useSelector(
     (state) => state.userAuthoruserAuthorLoginReducer
   );
-  
+
   let { register, handleSubmit } = useForm();
-  let [comment,setComment]=useState('')
-  let [articleEditStatus,setArticleEditStatus]=useState(false)
-  
+  let [comment, setComment] = useState("");
   let navigate = useNavigate();
-  
+  let [articleEditStatus, setArticleEditStatus] = useState(false);
+  let [currentArticle, setCurrentArticle] = useState(state);
+
+  const deleteArticle = async() => {
+    let art={...currentArticle};
+    delete art._id;
+    let res=await axiosWithToken.put(`http://localhost:4000/author-api/article/${currentArticle.articleId}`,art)
+    if(res.data.message==='article deleted'){
+      setCurrentArticle({...currentArticle,status:res.data.payload})
+    }
+  };
+
+  const restoreArticle =async () => {
+    let art={...currentArticle};
+    delete art._id;
+    let res=await axiosWithToken.put(`http://localhost:4000/author-api/article/${currentArticle.articleId}`,art)
+    if(res.data.message==='article restored'){
+      setCurrentArticle({...currentArticle,status:res.data.payload})
+    }
+  };
 
   //add comment top an article by user
-  const writeComment=async(commentObj)=>{
-    commentObj.username=currentUser.username;
-    let res=await axiosWithToken.post(`http://localhost:4000/user-api/comment/${state.articleId}`,commentObj)
-    if(res.data.message==='Comment posted'){
-      setComment(res.data.message)
+  const writeComment = async (commentObj) => {
+    commentObj.username = currentUser.username;
+    let res = await axiosWithToken.post(
+      `http://localhost:4000/user-api/comment/${state.articleId}`,
+      commentObj
+    );
+    if (res.data.message === "Comment posted") {
+      setComment(res.data.message);
     }
-  }
+  };
 
   //enable edit state
-  const enableEditState=()=>{
-    setArticleEditStatus(true)
-  }
+  const enableEditState = () => {
+    setArticleEditStatus(true);
+  };
 
   //disable edit state
-  const saveModifiedArticle=async(editedArticle)=>{
-
-    let modifiedArticle={...state,...editedArticle}
+  const saveModifiedArticle = async (editedArticle) => {
+    let modifiedArticle = { ...state, ...editedArticle };
     //change date of modification
-    modifiedArticle.dateOfModification=new Date();
+    modifiedArticle.dateOfModification = new Date();
     //remove _id
     delete modifiedArticle._id;
-   
-    //make http put req to save modified article in db
-    let res=await axiosWithToken.put('http://localhost:4000/author-api/article',modifiedArticle)
-    if(res.data.message==='Article modified'){
-      setArticleEditStatus(false);
-      navigate(`/author-profile/article/${modifiedArticle.articleId}`,{state:res.data.article})
-    }
-   
-    
-  }
 
-  
+    //make http put req to save modified article in db
+    let res = await axiosWithToken.put(
+      "http://localhost:4000/author-api/article",
+      modifiedArticle
+    );
+    if (res.data.message === "Article modified") {
+      setArticleEditStatus(false);
+      navigate(`/author-profile/article/${modifiedArticle.articleId}`, {
+        state: res.data.article,
+      });
+    }
+  };
+
   //convert ISO date to UTC data
   function ISOtoUTC(iso) {
     let date = new Date(iso).getUTCDate();
@@ -70,12 +91,10 @@ function Article() {
     return `${date}/${day}/${year}`;
   }
 
-
-
   return (
     <div>
-        {
-          articleEditStatus===false?<>
+      {articleEditStatus === false ? (
+        <>
           <div className="d-flex justify-content-between">
             <div>
               <p className="display-3 me-4">{state.title}</p>
@@ -93,14 +112,28 @@ function Article() {
             <div>
               {currentUser.userType === "author" && (
                 <>
-                  {" "}
-                  <button className="me-2"  onClick={enableEditState}>
-                    <CiEdit />
+                 
+                  <button
+                    className="me-2 btn btn-warning "
+                    onClick={enableEditState}
+                  >
+                    <CiEdit className="fs-2" />
                   </button>
-                  <button className="me-2" >
-                    <MdDelete />
-                  </button>
-                
+                  {currentArticle.status === true ? (
+                    <button
+                      className="me-2 btn btn-danger"
+                      onClick={deleteArticle}
+                    >
+                      <MdDelete className="fs-2" />
+                    </button>
+                  ) : (
+                    <button
+                      className="me-2 btn btn-info"
+                      onClick={restoreArticle}
+                    >
+                      <MdRestore className="fs-2" />
+                    </button>
+                  )}
                 </>
               )}
             </div>
@@ -145,10 +178,10 @@ function Article() {
               )}
             </div>
 
-              <h1>{comment}</h1>
+            <h1>{comment}</h1>
             {/* write comment by user */}
             {currentUser.userType === "user" && (
-              <form  onSubmit={handleSubmit(writeComment)}>
+              <form onSubmit={handleSubmit(writeComment)}>
                 <input
                   type="text"
                   {...register("comment")}
@@ -160,59 +193,58 @@ function Article() {
                 </button>
               </form>
             )}
-          </div></>:
-           <form onSubmit={handleSubmit(saveModifiedArticle)}>
-           <div className="mb-4">
-             <label htmlFor="title" className="form-label">
-               Title
-             </label>
-             <input
-               type="text"
-               className="form-control"
-               id="title"
-               {...register("title")}
-               defaultValue={state.title}
-             />
-           </div>
+          </div>
+        </>
+      ) : (
+        <form onSubmit={handleSubmit(saveModifiedArticle)}>
+          <div className="mb-4">
+            <label htmlFor="title" className="form-label">
+              Title
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="title"
+              {...register("title")}
+              defaultValue={state.title}
+            />
+          </div>
 
-           <div className="mb-4">
-             <label htmlFor="category" className="form-label">
-               Select a category
-             </label>
-             <select
-               {...register("category")}
-               id="category"
-               className="form-select"
-               defaultValue={state.category}
-             >
-               <option value="programming">Programming</option>
-               <option value="AI&ML">AI&ML</option>
-               <option value="database">Database</option>
-             </select>
-           </div>
-           <div className="mb-4">
-             <label htmlFor="content" className="form-label">
-               Content
-             </label>
-             <textarea
-               {...register("content")}
-               className="form-control"
-               id="content"
-               rows="10"
-               defaultValue={state.content}
-             ></textarea>
-           </div>
+          <div className="mb-4">
+            <label htmlFor="category" className="form-label">
+              Select a category
+            </label>
+            <select
+              {...register("category")}
+              id="category"
+              className="form-select"
+              defaultValue={state.category}
+            >
+              <option value="programming">Programming</option>
+              <option value="AI&ML">AI&ML</option>
+              <option value="database">Database</option>
+            </select>
+          </div>
+          <div className="mb-4">
+            <label htmlFor="content" className="form-label">
+              Content
+            </label>
+            <textarea
+              {...register("content")}
+              className="form-control"
+              id="content"
+              rows="10"
+              defaultValue={state.content}
+            ></textarea>
+          </div>
 
-           <div className="text-end">
-             <button type="submit" className="btn btn-success">
-               Save
-             </button>
-           </div>
-         </form>
-        }
-          
-        
-      
+          <div className="text-end">
+            <button type="submit" className="btn btn-success">
+              Save
+            </button>
+          </div>
+        </form>
+      )}
     </div>
   );
 }
