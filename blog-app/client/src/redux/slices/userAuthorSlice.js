@@ -7,7 +7,7 @@ export const userAuthorLoginThunk=createAsyncThunk("user-auhtor-login", async (u
   try {
     if (userCredObj.userType === "user") {
       const res = await axios.post(
-        "http://localhost:4000/user-api/login",
+        "http://localhost:5000/user-api/login",
         userCredObj
       );
       if (res.data.message == "login success") {
@@ -22,7 +22,7 @@ export const userAuthorLoginThunk=createAsyncThunk("user-auhtor-login", async (u
     }
     if (userCredObj.userType === "author") {
       const res = await axios.post(
-        "http://localhost:4000/author-api/login",
+        "http://localhost:5000/author-api/login",
         userCredObj
       );
       if (res.data.message == "login success") {

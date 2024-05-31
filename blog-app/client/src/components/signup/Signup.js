@@ -15,7 +15,9 @@ function Signup() {
   let [signupSuccess, setSignupSuccess] = useState(false);
 
   async function onSignUpFormSubmit(userObj) {
-    let res = await axios.post("http://localhost:4000/user-api/user", userObj);
+    console.log(userObj.userType);
+    if(userObj.userType==="user")
+    {let res = await axios.post("http://localhost:5000/user-api/user", userObj);
     console.log(res);
     if (res.status === 201) {
       setState(true);
@@ -23,7 +25,18 @@ function Signup() {
       setErr("");
     } else {
       setErr(res.data.message);
-    }
+    }}
+    if(userObj.userType==="author")
+      {let res = await axios.post("http://localhost:5000/author-api/user", userObj);
+      console.log(res);
+      if (res.status === 201) {
+        setState(true);
+        setSignupSuccess(true);
+        setErr("");
+      } else {
+        setErr(res.data.message);
+      }}
+
   }
 
   return (
@@ -61,7 +74,7 @@ function Signup() {
                     className="form-check-label me-3"
                     style={{
                       fontSize: "1.2rem",
-                      color: "var(--light-dark-grey)",
+                      color: "black",
                     }}
                   >
                     Register as

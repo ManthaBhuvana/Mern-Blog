@@ -13,7 +13,7 @@ function ArticlesByAuthor() {
   );
 
   const getArticlesOfCurrentAuthor=async()=>{
-    let res=await axiosWithToken.get(`http://localhost:4000/author-api/articles/${currentUser.username}`)
+    let res=await axiosWithToken.get(`http://localhost:5000/author-api/articles/${currentUser.username}`)
     console.log(res)
     setArticlesList(res.data.payload)
   }

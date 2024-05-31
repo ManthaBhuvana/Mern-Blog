@@ -26,7 +26,7 @@ function AddArticle() {
     article.comments = [];
     article.status = true;
    //make HTTP post req
-   let res=await axiosWithToken.post('http://localhost:4000/author-api/article',article)
+   let res=await axiosWithToken.post('http://localhost:5000/author-api/article',article)
    console.log(res)
    if(res.data.message==='New article created'){
     navigate(`/author-profile/articles-by-author/${currentUser.username}`)

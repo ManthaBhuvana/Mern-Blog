@@ -8,7 +8,7 @@ function Articles() {
   let navigate=useNavigate()
 
   const getArticlesOfCurrentAuthor=async()=>{
-    let res=await axiosWithToken.get(`http://localhost:4000/user-api/articles`)
+    let res=await axiosWithToken.get(`http://localhost:5000/user-api/articles`)
     console.log(res)
     setArticlesList(res.data.payload)
   }

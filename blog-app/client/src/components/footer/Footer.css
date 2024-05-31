@@ -1,5 +1,5 @@
 .bg-footer {
-    background-color: #33383c;
+    background-color: #0d0d0e;
     padding: 50px 0 30px;
 }
 .footer-heading {
@@ -7,18 +7,18 @@
 }
 
 .footer-link a {
-    color: #acacac;
+    color: #fdfdfd;
     line-height: 40px;
     font-size: 14px;
     transition: all 0.5s;
 }
 
 .footer-link a:hover {
-    color: #1bbc9b;
+    color: #778581;
 }
 
 .contact-info {
-    color: #acacac;
+    color: #faf6f6;
     font-size: 14px;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .facebook {
-    background-color: #4e71a8;
+    background-color: #2b31e5;
     color: #ffffff;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .footer-alt {
-    color: #acacac;
+    color: #c7bcb3;
 }
 
 .footer-heading {
@@ -64,10 +64,10 @@
 .footer-heading:after {
     content: '';
     width: 25px;
-    border-bottom: 1px solid #FFF;
+    border-bottom: 1px solid #faf5f5;
     position: absolute;
     left: 0;
     bottom: 0;
     display: block;
-    border-bottom: 1px solid #1bbc9b;
+    border-bottom: 1px solid crimson;
 }

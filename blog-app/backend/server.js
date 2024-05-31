@@ -10,6 +10,9 @@ app.use(exp.static(path.join(__dirname,'../client/build')))
 //to parse the body of req
 app.use(exp.json())
 
+var cors = require('cors');
+app.use(cors());
+
 //connect to DB
 mongoClient.connect(process.env.DB_URL)
 .then(client=>{
@@ -50,6 +53,6 @@ app.use((req,res,next)=>{
 app.use((err,req,res,next)=>{
     res.send({message:"error",payload:err.message})
 })
-//assign port number
+//assign port numberer
 const port=process.env.PORT || 5000;
-app.listen(port,()=>console.log(`Web server on port ${port}`))
+app.listen(port, () => console.log(`Web server on port ${port}`));

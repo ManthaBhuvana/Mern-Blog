@@ -54,7 +54,7 @@ function Signin() {
                     className="form-check-label me-3"
                     style={{
                       fontSize: "1.2rem",
-                      color: "var(--light-dark-grey)",
+                      color: "black",
                     }}
                   >
                     Login as
